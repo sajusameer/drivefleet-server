@@ -46,7 +46,7 @@ async function run() {
 
     const db = client.db("drivefleet");
 
-    const usersCollection = db.collection("users");
+    // const usersCollection = db.collection("users");
     const carsCollection = db.collection("cars");
     const bookingsCollection = db.collection("bookings");
 
