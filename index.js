@@ -28,10 +28,18 @@ const PORT =
 
 app.use(cookieParser());
 
+// app.use(
+//   cors({
+//     origin: [process.env.CLIENT_URL],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "https://drivefleet-gules.vercel.app",
     ],
     credentials: true,
   })
@@ -57,7 +65,7 @@ async function run() {
 
   try {
 
-    await client.connect();
+    // await client.connect();
 
     console.log(
       "MongoDB Connected!"
@@ -78,14 +86,7 @@ async function run() {
     // ROOT
     // =========================
 
-    app.get("/", (req, res) => {
-
-      res.send(
-        "DriveFleet Server Running"
-      );
-
-    });
-
+    
     // =========================
     // ADD CAR
     // =========================
@@ -413,13 +414,19 @@ run();
 // SERVER
 // =====================
 
-// app.listen(PORT, () => {
+app.get("/", (req, res) => {
 
-//   console.log(
-//     `Server running on port ${PORT}`
-//   );
+      res.send(
+        "DriveFleet Server Running"
+      );
 
-// });
+    });
 
 
-module.exports = app;
+app.listen(PORT, () => {
+
+  console.log(
+    `Server running on port ${PORT}`
+  );
+
+});
